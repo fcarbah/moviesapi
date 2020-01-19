@@ -1,0 +1,12 @@
+{
+    "movie":{
+        "years":{"min": 1800,"max": 2100},
+        "ratings":{"min":1,"max":1},
+        "length": {"min":0, "max":500},
+        "title": {"min":1, "max":50}
+
+    },
+    "mongo":{
+        
+    }
+}
