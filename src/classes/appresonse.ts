@@ -4,7 +4,7 @@ class AppResponse{
     message:string;
     payload:any
 
-    static error(message:string,code: number): AppResponse{
+    public static error(message:string,code: number): AppResponse{
         const resp = {
             code:code,
             error:true,
@@ -15,9 +15,9 @@ class AppResponse{
         return resp;
     }
 
-    static success(message:string='',payload:any = null): AppResponse{
+    public static success(message:string='',payload:any = null): AppResponse{
         const resp = {
-            code:0,
+            code:200,
             error:false,
             message:message,
             payload:payload
