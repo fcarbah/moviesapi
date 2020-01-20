@@ -1,12 +1,45 @@
 {
     "movie":{
-        "years":{"min": 1800,"max": 2100},
-        "ratings":{"min":1,"max":1},
-        "length": {"min":0, "max":500},
-        "title": {"min":1, "max":50}
+
+        "validation":{
+            "release_year":{
+                "rules":[
+                    {"arg":{"min": 1800,"max": 2100}, "method":"isInt", "message":"Release year must be between 1800 and 2100"}
+                ]
+            },
+            "rating":{
+            "rules": [
+                {"min":1,"max":5, "method":"isInt", "message": "Rating must be between 1 and 5"}
+                ]
+            },
+            "length": {
+                "rules": [
+                    {"arg":{"min":0, "max":500}, "method":"isInt", "message":"Length must be between 0 to 500 minutes"}
+                ]
+            },
+            "title": {
+                "rules":[
+                    {"arg":{"min":1, "max":50}, "method":"isLength", "message": "Title must be between 1 to 50 characters"},
+                    {"arg":"^([a-z]|[0-9])", "method":"matches","message": "Title must start with a letter or number"}
+                ]
+            },
+            "format":{
+                "rules":[
+                    {"arg":"^(dvd|streaming|vhs)$", "method":"matches", "message": "Format is invalid. Allowable formats: dvd,streaming,vhs"}
+                ]
+            }
+        },
+
+        "pagination":{
+            "page":{"default":1,"min":1},
+            "limit":{"default":100,"allowed":[10,50,100]},
+            "sort":{
+                "default":"title","default_order":"asc","allowed":["title","release_year","id","length","format","rating"],"order":["asc","desc"]
+            }
+        }
 
     },
-    "mongo":{
-        
+    "mongodb":{
+        "uri": "mongodb://localhost:27017/moviesdb"
     }
 }
