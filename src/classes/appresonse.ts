@@ -17,7 +17,7 @@ class AppResponse{
 
     public static success(message:string='',payload:any = null): AppResponse{
         const resp = {
-            code:200,
+            code:0,
             error:false,
             message:message,
             payload:payload

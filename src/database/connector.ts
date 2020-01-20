@@ -3,7 +3,7 @@ import mongo from "./mongo";
 
 export default class DBConnector{
 
-    public static connect(){
+    public static async connect(){
         mongo.connect();
     }
 

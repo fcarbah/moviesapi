@@ -12,7 +12,12 @@ export default class MovieTransformer{
         return newCollection;
     }
 
-    public static transform(movie: any) :MovieViewModel{
+    public static transform(movie: any) :MovieViewModel | null{
+
+        if(!movie){
+            return null;
+        }
+
         const mv = new MovieViewModel();
         mv.format = movie.format;
         mv.title = movie.title;
