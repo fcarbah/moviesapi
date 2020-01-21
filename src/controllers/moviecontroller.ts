@@ -2,18 +2,16 @@ import AppResponse from '../classes/appresonse';
 import config from 'config';
 import { MovieInterface, Movie, MovieSchema } from '../models/movie';
 import movieValidator from '../classes/movievalidator';
-import MovieTransformer from '../classes/movieTransformer';
+import movieTransformer from '../classes/movieTransformer';
 
 class MovieController{
 
     protected response: AppResponse;
     protected obj: any;
     protected config: any;
-    protected messages : String[];
 
     constructor(){
         this.config = config.get('movie');
-        this.messages = [];
     }
 
     async create(obj: MovieInterface): Promise<AppResponse>{
@@ -25,9 +23,12 @@ class MovieController{
         const movie = new Movie(obj);
 
         try{
+            
             const dbResponse = await Movie.create(movie)
 
-            return AppResponse.success(`Movie: "${movie.title}" created successfully`,MovieTransformer.transform(dbResponse));
+            const mv = await movieTransformer.transform(dbResponse);
+
+            return AppResponse.success(`Movie: "${movie.title}" created successfully`,mv);
         }
         catch(error){
             return AppResponse.error(error.message,50);
@@ -73,7 +74,9 @@ class MovieController{
                 return AppResponse.error("Movie not found",40)
             }
 
-            return AppResponse.success(``,MovieTransformer.transform(movie));
+            const mv = await movieTransformer.transform(movie);
+
+            return AppResponse.success(``,mv);
 
         }
         catch(error){
@@ -92,7 +95,7 @@ class MovieController{
 
             const movies = await Movie.paginate({},paginationOptions);
 
-            const collection = MovieTransformer.transformCollection(movies.docs);
+            const collection = await movieTransformer.transformCollection(movies.docs);
 
             const paginator = {movies: collection,page:movies.page,pages: movies.totalPages,limit: movies.limit,total: movies.totalDocs,offset:movies.offset};
 
@@ -123,7 +126,9 @@ class MovieController{
 
             const dbResponse = await Movie.findOneAndUpdate({movie_id: id},obj,{new: true});
 
-            return AppResponse.success(`Movie: "${movie.title}" (ID: ${id}) updated successfully`,MovieTransformer.transform(dbResponse));
+            const mv = movieTransformer.transform(dbResponse);
+
+            return AppResponse.success(`Movie: "${movie.title}" (ID: ${id}) updated successfully`,mv);
 
         }
         catch(error){

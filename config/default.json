@@ -41,5 +41,9 @@
     },
     "mongodb":{
         "uri": "mongodb://localhost:27017/moviesdb"
+    },
+    "imdbapi":{
+        "baseUrl": "https://imdb-internet-movie-database-unofficial.p.rapidapi.com/",
+        "host": "imdb-internet-movie-database-unofficial.p.rapidapi.com"
     }
 }

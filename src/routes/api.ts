@@ -1,6 +1,6 @@
 import express from "express";
 import movieCtrl from '../controllers/moviecontroller';
-import { sanitize, header, validationResult } from 'express-validator';
+import { sanitize, header, validationResult, checkSchema } from 'express-validator';
 import AppResponse from "../classes/appresonse";
 import { isAuthenticated } from "../controllers/authcontroller";
 
@@ -9,6 +9,10 @@ const router = express.Router();
 router.use('', 
     [header('Content-Type').isIn(['application/json','application/x-www-form-urlencoded'])],
     function(req, res, next){
+
+        if(['GET','DELETE'].indexOf(req.method) >=0){
+            return next();
+        }
 
         let result = validationResult(req);
 
