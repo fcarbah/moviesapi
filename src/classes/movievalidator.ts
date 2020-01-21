@@ -5,24 +5,24 @@ import config from 'config';
 export class MovieValidator{
 
     private config: any;
-    private errors: String[];
+    private errors: string[];
 
     constructor(){
         this.config = config.get('movie.validation')
-        this.errors = [];
     }
 
     validate(obj: MovieInterface){
 
-        if(this.validateFields(obj)){
+        this.errors = [];
 
+        if(this.validateFields(obj)){
             return this.validateFieldsValues(obj);
         }
 
         return false;
     }
 
-    getErrorMessages() : String[]{
+    getErrorMessages() : string[]{
         return this.errors;
     }
 
@@ -47,7 +47,10 @@ export class MovieValidator{
         let pass = true;
 
         for(var i in this.config){
-            if((<any>obj)[i] == undefined){
+
+            const val = (<any>obj)[i];
+
+            if( val == undefined || val == ''){
                 pass = false
                 this.errors.push(`Field ${i} is required`);
             }

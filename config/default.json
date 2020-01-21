@@ -32,7 +32,7 @@
 
         "pagination":{
             "page":{"default":1,"min":1},
-            "limit":{"default":100,"allowed":[10,50,100]},
+            "limit":{"default":100,"allowed":[1,5,10,50,100]},
             "sort":{
                 "default":"title","default_order":"asc","allowed":["title","release_year","id","length","format","rating"],"order":["asc","desc"]
             }
@@ -41,5 +41,9 @@
     },
     "mongodb":{
         "uri": "mongodb://localhost:27017/moviesdb"
+    },
+    "imdbapi":{
+        "baseUrl": "https://imdb-internet-movie-database-unofficial.p.rapidapi.com/",
+        "host": "imdb-internet-movie-database-unofficial.p.rapidapi.com"
     }
 }

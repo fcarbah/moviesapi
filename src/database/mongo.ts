@@ -21,4 +21,5 @@ export class Mongo {
     }
 }
 
+
 export default new Mongo();

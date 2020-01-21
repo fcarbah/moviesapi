@@ -30,6 +30,7 @@ export class MovieViewModel{
     release_year: Number;
     rating: Number;
     id: Number;
+    poster:String;
 
 }
 
