@@ -39,7 +39,7 @@ router.get('/api/v1/movies',
 
 router.post('/api/v1/movies', [
         isAuthenticated,
-        sanitize(['title','length','release_year','format']).trim().escape(),
+        sanitize(['title','length','release_year','format','rating']).trim().escape(),
     ],
     async (req, res) => {
         let resp = await movieCtrl.create(req.body);

@@ -1,0 +1,11 @@
+FROM node:13
+
+EXPOSE 80
+
+WORKDIR /usr/app
+
+COPY ./package.json .
+
+RUN command npm install
+
+CMD ["npm","run","start:dev"]

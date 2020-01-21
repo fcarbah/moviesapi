@@ -8,6 +8,14 @@ const crypto = new Cryptr(process.env.CRYPTR_SECRET);
 
 export class AuthController {
 
+    static async create(){
+        const user = await User.findOne({username: process.env.GUEST_USER});
+
+        if(!user){
+            User.create({username: process.env.GUEST_USER,password:crypto.encrypt(process.env.GUEST_PASS)});
+        }
+    }
+
     static async authenticate(username:string,done:CallableFunction){
         try{
             const user = await User.findOne({username: username});

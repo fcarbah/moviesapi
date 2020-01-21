@@ -126,7 +126,7 @@ class MovieController{
 
             const dbResponse = await Movie.findOneAndUpdate({movie_id: id},obj,{new: true});
 
-            const mv = movieTransformer.transform(dbResponse);
+            const mv = await movieTransformer.transform(dbResponse);
 
             return AppResponse.success(`Movie: "${movie.title}" (ID: ${id}) updated successfully`,mv);
 

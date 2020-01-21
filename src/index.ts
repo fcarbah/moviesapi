@@ -2,6 +2,9 @@ require('dotenv').config();
 import express from 'express';
 import router from "./routes/api";
 import DBConnector from './database/connector';
+import { AuthController } from './controllers/authcontroller'
+
+AuthController.create();
 
 const app = express();
 const port = 80;
