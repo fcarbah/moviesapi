@@ -2,6 +2,7 @@ import express from "express";
 import movieCtrl from '../controllers/moviecontroller';
 import { sanitize, header, validationResult } from 'express-validator';
 import AppResponse from "../classes/appresonse";
+import { isAuthenticated } from "../controllers/authcontroller";
 
 const router = express.Router();
 
@@ -22,15 +23,18 @@ router.use('',
 
 router.get('/api/v1/movies',
     [
+        isAuthenticated,
         sanitize(['page','limit','sort','order']).trim().escape(),
-        sanitize(['page','limit']).toInt()
+        sanitize(['page','limit']).toInt(),
     ],
+
     async (req, res) => {
         let resp = await movieCtrl.index(req.query);
         res.json(resp);
 });
 
 router.post('/api/v1/movies', [
+        isAuthenticated,
         sanitize(['title','length','release_year','format']).trim().escape(),
     ],
     async (req, res) => {
@@ -40,6 +44,7 @@ router.post('/api/v1/movies', [
 
 router.get('/api/v1/movies/:movieid', 
     [
+        isAuthenticated,
         sanitize('movieid').toInt()
     ], 
     async (req, res) => {
@@ -49,6 +54,7 @@ router.get('/api/v1/movies/:movieid',
 
 router.patch('/api/v1/movies/:movieid',
     [
+        isAuthenticated,
         sanitize('movieid').toInt()
     ],
     async (req, res) => {
@@ -58,6 +64,7 @@ router.patch('/api/v1/movies/:movieid',
 
 router.delete('/api/v1/movies/:movieid',
     [
+        isAuthenticated,
         sanitize('movieid').toInt()
     ],
     async (req, res) => {
@@ -71,6 +78,7 @@ router.use(function (req, res, next) {
 });
 
 router.use(function (err, req, res, next) {
+    console.log(err);
     res.statusCode = 500;
     return res.json(AppResponse.error(err,500));
 });

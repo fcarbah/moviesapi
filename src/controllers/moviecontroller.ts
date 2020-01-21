@@ -2,7 +2,6 @@ import AppResponse from '../classes/appresonse';
 import config from 'config';
 import { MovieInterface, Movie, MovieSchema } from '../models/movie';
 import movieValidator from '../classes/movievalidator';
-import DBConnector from '../database/connector';
 import MovieTransformer from '../classes/movieTransformer';
 
 class MovieController{
