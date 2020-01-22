@@ -10,7 +10,7 @@
             "rating":{
                 "rules": [
                     {"arg":{"min":1,"max":5}, "method":"isInt", "message": "Rating must be between 1 and 5"}
-                    ]
+                ]
             },
             "length": {
                 "rules": [

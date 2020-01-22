@@ -1,0 +1,26 @@
+{
+    "AWSEBDockerrunVersion": 2,
+	"containerDefinitions":[
+		{
+			"name":"mongodb",
+			"image":"mongodb:4.2",
+			"hostname":"mongodb",
+			"essential":true,
+			"memory":128
+		},
+		{
+			"name":"movieapi",
+			"image":"fcarbah/moviesapi:latest",
+			"hostname":"movieapi",
+			"essential":true,
+            "memory":128,
+            "portMappings":[
+				{
+					"hostPort":80,
+					"containerPort":80
+				}
+			],
+			"links":["mongodb","movieapi"]
+		}
+	]
+}
