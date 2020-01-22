@@ -1,15 +1,15 @@
 sudo: required
 services:
-    - docker
+  - docker
 
 before_install:
-    - echo "do nothing"
+  - echo "do nothing"
     
 script:
-    echo "no tests setup"
+  echo "no tests setup"
 
 after_success:
-    docker build -t fcarbah/moviesapi .
+  docker build -t fcarbah/moviesapi .
 
 
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
