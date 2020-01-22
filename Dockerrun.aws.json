@@ -20,7 +20,7 @@
 					"containerPort":80
 				}
 			],
-			"links":["mongodb","movieapi"]
+			"links":["mongodb"]
 		}
 	]
 }
