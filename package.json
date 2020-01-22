@@ -4,7 +4,7 @@
   "description": "Movies API",
   "main": "index.ts",
   "scripts": {
-    "build": "rimraf ./dist && tsc",
+    "build": "rimraf ./dist && tsc --build tsConfig.json",
     "serve": "ts-node src/index.ts",
     "start": "npm run build && node dist/index.js",
     "start:dev": "nodemon",

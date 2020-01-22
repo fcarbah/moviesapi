@@ -2,6 +2,7 @@
     "compilerOptions": {
       "esModuleInterop": true,
       "noImplicitAny": false,
+      "forceConsistentCasingInFileNames": false,
       "target": "es5",
       "lib": ["esnext","dom"],
       "outDir": "dist"

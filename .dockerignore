@@ -1,8 +1,0 @@
-tests
-dist
-node_modules
-.git
-.cache
-README.md
-docker-compose.yaml
-Dockerrun.aws.json
