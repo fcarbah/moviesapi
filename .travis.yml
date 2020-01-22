@@ -2,6 +2,9 @@ sudo: required
 services:
     - docker
 
+before_install:
+    - echo "do nothing"
+    
 script:
     echo "no tests setup"
 
