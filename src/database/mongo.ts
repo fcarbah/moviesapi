@@ -8,10 +8,10 @@ export class Mongo {
     async connect() {
 
         try {
-            await mongoose.connect(this.uri, {useNewUrlParser: true, useUnifiedTopology: true});
+            return await mongoose.connect(this.uri, {useNewUrlParser: true, useUnifiedTopology: true});
         }
         catch (error) {
-            throw new Error(error.message);
+            throw new Error('Error connecting to DB');
         }
 
     }

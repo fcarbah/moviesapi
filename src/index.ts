@@ -15,7 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', router);
 
 DBConnector.connect().then(() =>{
-app.listen(port, () => console.log(`Movie api listening on port ${port}!`));
+  app.listen(port, () => console.log(`Movie api listening on port ${port}!`));
+}).catch(error =>{
+  console.log('error connecting to db! Exiting app');
+  process.exit();
 });
 
 process.on('SIGINT', () => {
