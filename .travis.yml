@@ -15,3 +15,16 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push fcarbah/moviesapi
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "MoviesApi"
+  env: "Moviesapi-env"
+  bucket_name: "elasticbeanstalk-us-east-2-568181463526"
+  bucket_path: "MoviesApi" 
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
