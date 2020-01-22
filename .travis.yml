@@ -9,7 +9,7 @@ script:
   - echo "no tests setup"
 
 after_success:
-  - docker build -t fcarbah/moviesapi ./
+  - docker build -t fcarbah/moviesapi:1 ./
 
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin

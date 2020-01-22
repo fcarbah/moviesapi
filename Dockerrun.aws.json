@@ -10,7 +10,7 @@
 		},
 		{
 			"name":"movieapi",
-			"image":"fcarbah/moviesapi:latest",
+			"image":"fcarbah/moviesapi:1",
 			"hostname":"movieapi",
 			"essential":true,
             "memory":128,
