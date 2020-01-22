@@ -6,6 +6,6 @@ WORKDIR /usr/app
 
 COPY ./package.json .
 
-RUN command npm install
+RUN npm install
 
 CMD ["npm","run","start:dev"]
