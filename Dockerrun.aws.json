@@ -3,7 +3,7 @@
 	"containerDefinitions":[
 		{
 			"name":"mongodb",
-			"image":"mongodb:4.2",
+			"image":"mongo:4.2",
 			"hostname":"mongodb",
 			"essential":true,
 			"memory":128
