@@ -6,14 +6,14 @@
 			"image":"mongo:4.2",
 			"hostname":"mongodb",
 			"essential":true,
-			"memory":128
+			"memory":4096
 		},
 		{
 			"name":"movieapi",
 			"image":"fcarbah/moviesapi:1",
 			"hostname":"movieapi",
 			"essential":true,
-            "memory":128,
+            "memory":4096,
             "portMappings":[
 				{
 					"hostPort":80,
