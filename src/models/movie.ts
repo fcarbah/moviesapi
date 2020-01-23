@@ -1,15 +1,10 @@
 import { Document, Schema, model } from "mongoose";
-import config from "config";
-import mongoose from 'mongoose';
 import autoIncrement from 'mongoose-auto-increment';
 import mongoosePaginate from 'mongoose-paginate-v2';
+import DBConnector from "../database/connector";
 
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useUnifiedTopology', true);
 
-const conn = mongoose.createConnection(config.get('mongodb.uri'),{ useNewUrlParser: true, useUnifiedTopology: true });
+const conn = DBConnector.create();
 
 autoIncrement.initialize(conn);
 
