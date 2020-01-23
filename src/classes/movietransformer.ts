@@ -16,10 +16,10 @@ export class MovieTransformer{
     public async transformCollection(collection: any[]){
         const newCollection: MovieViewModel[] = [];
 
-        collection.forEach(async (item) => {
-            const mv = await this.transform(item);
+        for(var i in collection){
+            const mv = await this.transform(collection[i]);
             newCollection.push(mv);
-        })
+        }
 
         return newCollection;
     }

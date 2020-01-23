@@ -21,7 +21,7 @@ export class AuthController {
             const user = await User.findOne({username: username});
 
             if(!user){
-                return done({t:1},false)
+                return done("Invalid Credentials",false)
             }
 
             return done(null,username,crypto.decrypt(user.password.toString()));
